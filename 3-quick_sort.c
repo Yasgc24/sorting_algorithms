@@ -19,8 +19,15 @@ void swap_int(int *a, int *b)
 }
 
 /**
- * @brief 
- * 
+ * partition - function that takes the last element as the
+ * pivot, places the pivot element in its correct position
+ * in the sorted array, and places all smaller ones to the
+ * left of the pivot and all larger elements to the right of the pivot
+ * @array: array of integers
+ * @size: size of the array
+ * @low: initial index of the array
+ * @high: final index of the array
+ * Return: void
  */
 
 int partition(int *array, size_t size, int low, int high)
@@ -49,8 +56,11 @@ int partition(int *array, size_t size, int low, int high)
 }
 
 /**
- * @brief 
- * 
+ * quick_sortp - 
+ * @array: array of integers to be sorted
+ * @size: size of the array
+ * @low: starting index
+ * @high: ending index 
  */
 
 void quick_sortp(int *array, size_t size, int low, int high)
@@ -67,8 +77,10 @@ void quick_sortp(int *array, size_t size, int low, int high)
 }
 
 /**
- * @brief 
- * 
+ * quick_sort - function that sorts an array of integers in ascending
+ * order using the Quick sort algorithm
+ * @array: array of integers
+ * @size: size of the array
  */
 
 void quick_sort(int *array, size_t size)

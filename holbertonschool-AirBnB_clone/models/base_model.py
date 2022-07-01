@@ -12,10 +12,18 @@ class BaseModel:
     def __init__(self, *args, **kwargs):
         """Inizialite BaseModel"""
 
-        self.id = str(uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+        if kwargs:
+            kwargs['created_at'] = datetime.strptime(kwargs['created_at'], "%Y-%m-%dT%H:%M:%S.%f")
+            kwargs['updated_at'] = datetime.strptime(kwargs['updated_at'], "%Y-%m-%dT%H:%M:%S.%f")
+            del kwargs["__class__"]
+            self.__dict__.update(kwargs)
 
+        else:
+            self.id = str(uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
+
+            
     def to_dict(self):
         """Dictionary from save class"""
         BaseDict = self.__dict__.copy()
@@ -33,3 +41,4 @@ class BaseModel:
         """Updates the public instance attribute
         updated_atwith the current datetime"""
         self.updated_at = datetime.now()
+        
